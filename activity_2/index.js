@@ -88,10 +88,8 @@ function register(event) {
     alert("Please enter a valid 11-digit phone number. (09 already included)");
   } else if (password === confirm_password) {
     let isRegistered = false;
-    for (const user of users) {
-      if (user.number === "09" + number) {
-        isRegistered = true;
-      }
+    if (currentUser.number === "09" + number) {
+      isRegistered = true;
     }
 
     if (isRegistered) {
@@ -146,13 +144,7 @@ function addLoad(event) {
     alert("Loaded Successfully!");
 
     document.getElementById("current_load").value = current_load + add_load;
-    for (const user of users) {
-      if (user.number === currentUser.number) {
-        user.current_load = current_load + add_load;
-
-        break;
-      }
-    }
+    currentUser.current_load = current_load + add_load;
 
     // Reset
     document.getElementById("add_load").value = "";
@@ -195,14 +187,7 @@ function loadHistoryLoad() {
 }
 
 function addHistoryLoad(newLoad) {
-  for (const user of users) {
-    if (user.number === currentUser.number) {
-      user.history_load.unshift(newLoad);
-
-      break;
-    }
-  }
-
+  currentUser.history_load.unshift(newLoad);
   loadHistoryLoad();
 }
 
@@ -245,6 +230,12 @@ function diminishLoad(event) {
 
   if (mobile_number.length < 9) {
     alert("Please enter a valid 11-digit phone number. (09 already included)");
+  } else if ("09" + mobile_number === currentUser.number) {
+    alert("Can't pasaload to yourself!");
+
+    // Reset
+    document.getElementById("mobile_number").value = "";
+    document.getElementById("sub_load").value = "";
   } else if (sub_load === 0) {
     alert("You can't pasaload 0!");
 
@@ -265,18 +256,11 @@ function diminishLoad(event) {
     alert("Loaded Successfully!");
 
     document.getElementById("current_load").value = current_load - sub_load;
-
-    for (const user of users) {
-      if (user.number === currentUser.number) {
-        user.current_load = current_load - sub_load;
-
-        break;
-      }
-    }
+    currentUser.current_load = current_load - sub_load;
 
     addHistoryLoad({
       date_and_time: getFormattedDateTime(),
-      mobile_number: mobile_number,
+      mobile_number: "09" + mobile_number,
       load: sub_load,
       balance: current_load - sub_load,
     });
