@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box !important;
+}
+
+.text-primary {
+  color: #ecab6a !important;
+}
+
+.bg-secondary {
+  background-color: #0e0802 !important;
+}
+
+body {
+  background-color: #26211b;
+  font-family: "Open Sans", serif !important;
+}
+
+.custom-letter-spacing {
+  letter-spacing: 0.1rem;
+}
+
+.custom-line-height {
+  line-height: 1.2rem;
+}
+
+.gray-text {
+  color: rgba(236, 171, 106, 0.6) !important;
+}
+
+.link {
+  color: #ecab6a;
+  text-decoration: none;
+  margin-bottom: 0;
+
+  transition: all 0.1s ease-in;
+}
+
+.link:hover {
+  color: #8e6740;
+}
+
+.card {
+  transition: all 0.25s ease-in-out;
+}
+
+.card:hover {
+  scale: 102%;
+}

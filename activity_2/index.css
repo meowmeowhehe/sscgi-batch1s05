@@ -1,0 +1,27 @@
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body {
+  background-color: rgb(220, 220, 220);
+  font-family: "Quicksand", sans-serif;
+}
+
+.bg-color {
+  background-color: #30323d;
+}
+
+#login-form-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column: span 2;
+}
+
+#current_load {
+  width: 10%;
+  font-family: "Quicksand", sans-serif !important;
+
+  color: white !important;
+}
