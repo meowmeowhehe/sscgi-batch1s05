@@ -30,19 +30,19 @@ var users = [
 ];
 var currentUser = {};
 
-var registerForm = document.getElementById("registerForm");
-var loginForm = document.getElementById("loginForm");
-var loginRegister = document.getElementById("loginRegister");
-var pasaLoad = document.getElementById("pasaLoad");
+var register_form = document.getElementById("register_form");
+var login_form = document.getElementById("login_form");
+var login_register = document.getElementById("login_register");
+var pasaload = document.getElementById("pasaload");
 
 function noAccount() {
-  registerForm.classList.remove("visually-hidden");
-  loginForm.classList.add("visually-hidden");
+  register_form.classList.remove("visually-hidden");
+  login_form.classList.add("visually-hidden");
 }
 
 function hasAccount() {
-  registerForm.classList.add("visually-hidden");
-  loginForm.classList.remove("visually-hidden");
+  register_form.classList.add("visually-hidden");
+  login_form.classList.remove("visually-hidden");
 }
 
 function login(event) {
@@ -69,8 +69,8 @@ function login(event) {
       document.getElementById("current_load").value = currentUser.current_load;
       loadHistoryLoad();
 
-      loginRegister.classList.add("visually-hidden");
-      pasaLoad.classList.remove("visually-hidden");
+      login_register.classList.add("visually-hidden");
+      pasaload.classList.remove("visually-hidden");
 
       // Reset
       document.getElementById("login_number").value = "";
@@ -130,8 +130,8 @@ function register(event) {
 function logout() {
   currentUser = {};
 
-  loginRegister.classList.remove("visually-hidden");
-  pasaLoad.classList.add("visually-hidden");
+  login_register.classList.remove("visually-hidden");
+  pasaload.classList.add("visually-hidden");
 }
 
 function addLoad(event) {

@@ -46,9 +46,11 @@ body {
   width: auto;
 }
 @media only screen and (max-width: 576px) {
+  #login_register {
+    padding: 0 0.5rem !important;
+  }
   #lr-container {
     width: 100%;
-    padding: 0 1rem !important;
   }
 }
 
