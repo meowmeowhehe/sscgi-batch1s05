@@ -1,11 +1,18 @@
 /*
-  Users:
-  {
+  users: [{
     number: "",
     password: "",
     current_load: "",
     history_load: ""
-  }
+  }]
+
+  history_load: [{
+    date_and_time,
+    type,
+    amount,
+    source,
+    balance
+  }]
 */
 var users = [
   {
@@ -146,6 +153,15 @@ function addLoad(event) {
     document.getElementById("current_load").value = current_load + add_load;
     currentUser.current_load = current_load + add_load;
 
+    currentUser.history_load.unshift({
+      date_and_time: getFormattedDateTime(),
+      type: "Reload",
+      amount: add_load,
+      source: "-",
+      balance: current_load + add_load,
+    });
+    loadHistoryLoad();
+
     // Reset
     document.getElementById("add_load").value = "";
 
@@ -160,22 +176,24 @@ function loadHistoryLoad() {
   var tableOutput = "";
   var perLine = "";
 
-  tableOutput += "<table class='table table-dark'>";
+  tableOutput += `<table class="table table-borderless">`;
 
   perLine += "<tr>";
-  perLine += "<th>Date & Time</th>";
-  perLine += "<th>Number</th>";
-  perLine += "<th>Load</th>";
-  perLine += "<th>Balance</th>";
+  perLine += `<th class="bg-main">Date & Time</th>`;
+  perLine += `<th class="bg-main">Type</th>`;
+  perLine += `<th class="bg-main">Amount</th>`;
+  perLine += `<th class="bg-main">Recipient / Source</th>`;
+  perLine += `<th class="bg-main">Balance</th>`;
   perLine += "</tr>";
 
-  for (const load of currentUser.history_load) {
+  for (const history of currentUser.history_load) {
     perLine += "<tr>";
 
-    perLine += `<td>${load.date_and_time}</td>`;
-    perLine += `<td>${load.mobile_number}</td>`;
-    perLine += `<td>${load.load}</td>`;
-    perLine += `<td>${load.balance}</td>`;
+    perLine += `<td class="bg-main">${history.date_and_time}</td>`;
+    perLine += `<td class="bg-main">${history.type}</td>`;
+    perLine += `<td class="bg-main">${history.amount}</td>`;
+    perLine += `<td class="bg-main">${history.source}</td>`;
+    perLine += `<td class="bg-main">${history.balance}</td>`;
 
     perLine += "</tr>";
   }
@@ -184,11 +202,6 @@ function loadHistoryLoad() {
   tableOutput += "</table>";
 
   document.getElementById("history_load").innerHTML = tableOutput;
-}
-
-function addHistoryLoad(newLoad) {
-  currentUser.history_load.unshift(newLoad);
-  loadHistoryLoad();
 }
 
 function getFormattedDateTime() {
@@ -258,12 +271,14 @@ function diminishLoad(event) {
     document.getElementById("current_load").value = current_load - sub_load;
     currentUser.current_load = current_load - sub_load;
 
-    addHistoryLoad({
+    currentUser.history_load.unshift({
       date_and_time: getFormattedDateTime(),
-      mobile_number: "09" + mobile_number,
-      load: sub_load,
+      type: "Pasaload",
+      amount: sub_load,
+      source: "09" + mobile_number,
       balance: current_load - sub_load,
     });
+    loadHistoryLoad();
 
     // Reset
     document.getElementById("mobile_number").value = "";

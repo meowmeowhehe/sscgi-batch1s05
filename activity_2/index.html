@@ -32,9 +32,9 @@
       <section class="vh-100 position-relative">
         <div
           id="lr-container"
-          class="position-absolute top-50 start-50 translate-middle"
+          class="position-absolute top-50 start-50 translate-middle shadow-main rounded-3 bg-main p-4"
         >
-          <div class="row rounded-3 bg-color text-white p-4">
+          <div class="row">
             <!-- #region Login -->
             <form
               id="loginForm"
@@ -89,13 +89,13 @@
                   <button
                     type="button"
                     onclick="noAccount()"
-                    class="btn btn-dark px-2 py-1"
+                    class="btn btn-second px-2 py-1"
                   >
                     Register
                   </button>
                 </div>
                 <div class="col text-end">
-                  <button type="submit" class="btn btn-dark px-2 py-1">
+                  <button type="submit" class="btn btn-main px-2 py-1">
                     Login
                   </button>
                 </div>
@@ -172,13 +172,13 @@
                   <button
                     type="button"
                     onclick="hasAccount()"
-                    class="btn btn-dark px-2 py-1"
+                    class="btn btn-second px-2 py-1"
                   >
                     to Login
                   </button>
                 </div>
                 <div class="col text-end">
-                  <button type="submit" class="btn btn-dark px-2 py-1">
+                  <button type="submit" class="btn btn-main px-2 py-1">
                     Register
                   </button>
                 </div>
@@ -214,11 +214,11 @@
             class="collapse navbar-collapse justify-content-end"
             id="collapsibleNavId"
           >
-            <div class="d-flex flex-column flex-sm-row gap-2">
+            <div class="d-flex flex-column flex-sm-row column-gap-2 row-gap-1">
               <!-- Modal trigger button -->
               <button
                 type="button"
-                class="btn btn-dark mt-sm-0 mt-2 px-2"
+                class="btn btn-main mt-sm-0 mt-2 px-2"
                 data-bs-toggle="modal"
                 data-bs-target="#modalReload"
               >
@@ -227,7 +227,7 @@
               <button
                 type="button"
                 onclick="logout()"
-                class="btn btn-dark mt-sm-0 mt-2 px-2"
+                class="btn btn-main mt-sm-0 mt-2 px-2"
               >
                 Logout
               </button>
@@ -249,10 +249,14 @@
         aria-hidden="true"
       >
         <div
-          class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm mx-auto"
+          class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm vh-100 mx-auto"
           role="document"
         >
-          <form onsubmit="addLoad(event)" class="modal-content">
+          <form
+            onsubmit="addLoad(event)"
+            class="modal-content shadow-main bg-main"
+            data-bs-theme="dark"
+          >
             <div class="modal-header justify-content-between px-3 py-2">
               <h5 class="modal-title" id="modalTitleId">Add Load Here!</h5>
               <button
@@ -286,12 +290,12 @@
             <div class="modal-footer gap-2 px-3 py-2">
               <button
                 type="button"
-                class="btn btn-secondary px-2 py-1"
+                class="btn btn-second px-2 py-1"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="submit" class="btn btn-primary px-2 py-1">
+              <button type="submit" class="btn btn-main px-2 py-1">
                 Add Load
               </button>
             </div>
@@ -302,7 +306,7 @@
 
       <!-- #region Mobile Number -->
       <section
-        class="container rounded-3 bg-color text-white mx-auto mt-5 mb-2 p-4"
+        class="container rounded-3 shadow-main bg-main mx-auto mt-5 mb-2 p-4"
       >
         <p class="lead">
           Welcome back, <span id="number" class="fw-bold display-6"></span>
@@ -311,7 +315,7 @@
       <!-- #endregion Mobile Number -->
 
       <!-- #region PasaLoad -->
-      <main class="container rounded-3 bg-color text-white mx-auto mb-2 p-4">
+      <main class="container rounded-3 shadow-main bg-main mx-auto mb-2 p-4">
         <div class="row">
           <form onsubmit="diminishLoad(event)" class="col text-center">
             <p class="display-2 fw-bolder mb-4">PasaLoad</p>
@@ -366,7 +370,7 @@
                 required
               />
             </div>
-            <button type="submit" class="btn btn-dark px-2 py-1">
+            <button type="submit" class="btn btn-main px-2 py-1">
               PasaLoad
             </button>
           </form>
@@ -375,7 +379,7 @@
       <!-- #endregion PasaLoad -->
 
       <!-- #region History -->
-      <section class="container rounded-3 bg-color text-white mx-auto mb-5 p-4">
+      <section class="container rounded-3 shadow-main bg-main mx-auto mb-5 p-4">
         <div class="row">
           <div class="col">
             <p class="display-6 fw-bolder text-center mb-4">History</p>
