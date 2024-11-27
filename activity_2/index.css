@@ -13,7 +13,31 @@ body {
   background-color: #30323d;
 }
 
-#login-form-container {
+#lr-container {
+  width: auto;
+}
+@media only screen and (max-width: 576px) {
+  #lr-container {
+    width: 100%;
+    padding: 0 1rem !important;
+  }
+}
+
+.mobile-number-input {
+  width: 25%;
+}
+@media only screen and (max-width: 768px) {
+  .mobile-number-input {
+    width: auto;
+  }
+}
+
+.-m-2 {
+  margin-right: -0.5rem !important;
+  margin-left: -0.5rem !important;
+}
+
+#form-container {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-column: span 2;

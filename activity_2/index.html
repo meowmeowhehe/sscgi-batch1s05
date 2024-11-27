@@ -30,13 +30,21 @@
     <!-- #region Login & Register -->
     <section id="loginRegister">
       <section class="vh-100 position-relative">
-        <div class="position-absolute top-50 start-50 translate-middle">
+        <div
+          id="lr-container"
+          class="position-absolute top-50 start-50 translate-middle"
+        >
           <div class="row rounded-3 bg-color text-white p-4">
-            <form id="loginForm" onsubmit="login(event)" class="col">
+            <!-- #region Login -->
+            <form
+              id="loginForm"
+              onsubmit="login(event)"
+              class="col needs-validation"
+            >
               <p class="display-6 fw-bolder text-center mb-4">Login</p>
 
               <div
-                id="login-form-container"
+                id="form-container"
                 class="align-items-center column-gap-2 row-gap-2"
               >
                 <div class="col">
@@ -45,19 +53,22 @@
                   >
                 </div>
                 <div class="col">
-                  <input
-                    type="text"
-                    pattern="[0-9]*"
-                    inputmode="numeric"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    class="form-control px-2 py-1"
-                    name="login_number"
-                    id="login_number"
-                    placeholder="09#########"
-                    minlength="11"
-                    maxlength="11"
-                    required
-                  />
+                  <div class="input-group">
+                    <span class="input-group-text px-2">09</span>
+                    <input
+                      type="tel"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                      class="form-control px-2 py-1"
+                      name="login_number"
+                      id="login_number"
+                      placeholder="number"
+                      minlength="9"
+                      maxlength="9"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="col">
                   <label for="login_password" class="form-label fw-semibold"
@@ -90,7 +101,9 @@
                 </div>
               </div>
             </form>
+            <!-- #endregion Login -->
 
+            <!-- #region Register -->
             <form
               id="registerForm"
               onsubmit="register(event)"
@@ -99,7 +112,7 @@
               <p class="display-6 fw-bolder text-center mb-4">Register</p>
 
               <div
-                id="login-form-container"
+                id="form-container"
                 class="align-items-center column-gap-2 row-gap-2"
               >
                 <div class="col">
@@ -108,19 +121,22 @@
                   >
                 </div>
                 <div class="col">
-                  <input
-                    type="text"
-                    pattern="[0-9]*"
-                    inputmode="numeric"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                    class="form-control px-2 py-1"
-                    name="register_number"
-                    id="register_number"
-                    placeholder="09#########"
-                    minlength="11"
-                    maxlength="11"
-                    required
-                  />
+                  <div class="input-group">
+                    <span class="input-group-text px-2">09</span>
+                    <input
+                      type="text"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                      class="form-control px-2 py-1"
+                      name="register_number"
+                      id="register_number"
+                      placeholder="number"
+                      minlength="9"
+                      maxlength="9"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="col">
                   <label for="register_password" class="form-label fw-semibold"
@@ -168,6 +184,7 @@
                 </div>
               </div>
             </form>
+            <!-- #endregion Register -->
           </div>
         </div>
       </section>
@@ -175,13 +192,15 @@
     <!-- #endregion Login & Register -->
 
     <!-- #region Pasaload -->
-    <section id="pasaLoad" class="visually-hidden">
+    <section id="pasaLoad" class="visually-hidden px-2">
       <!-- #region Navbar -->
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav
+        class="navbar navbar-expand-sm navbar-dark bg-dark px-sm-0 px-2 -m-2"
+      >
         <div class="container mx-auto py-3">
-          <a class="navbar-brand d-flex" href="#">PasaLoad</a>
+          <p class="navbar-brand d-flex" href="#">PasaLoad</p>
           <button
-            class="navbar-toggler d-lg-none"
+            class="navbar-toggler d-lg-none fs-6 p-1"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapsibleNavId"
@@ -199,7 +218,7 @@
               <!-- Modal trigger button -->
               <button
                 type="button"
-                class="btn btn-dark mt-sm-0 mt-2"
+                class="btn btn-dark mt-sm-0 mt-2 px-2"
                 data-bs-toggle="modal"
                 data-bs-target="#modalReload"
               >
@@ -208,7 +227,7 @@
               <button
                 type="button"
                 onclick="logout()"
-                class="btn btn-dark mt-sm-0 mt-2"
+                class="btn btn-dark mt-sm-0 mt-2 px-2"
               >
                 Logout
               </button>
@@ -283,7 +302,7 @@
 
       <!-- #region Mobile Number -->
       <section
-        class="container mx-auto rounded-3 bg-color text-white mt-5 mb-2 p-4"
+        class="container rounded-3 bg-color text-white mx-auto mt-5 mb-2 p-4"
       >
         <p class="lead">
           Welcome back, <span id="number" class="fw-bold display-6"></span>
@@ -292,7 +311,7 @@
       <!-- #endregion Mobile Number -->
 
       <!-- #region PasaLoad -->
-      <main class="container mx-auto rounded-3 bg-color text-white mb-2 p-4">
+      <main class="container rounded-3 bg-color text-white mx-auto mb-2 p-4">
         <div class="row">
           <form onsubmit="diminishLoad(event)" class="col text-center">
             <p class="display-2 fw-bolder mb-4">PasaLoad</p>
@@ -311,19 +330,22 @@
               <label for="mobile_number" class="form-label fw-semibold"
                 >Mobile Number:</label
               >
-              <input
-                type="text"
-                pattern="[0-9]*"
-                inputmode="numeric"
-                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                class="form-control w-25 px-2 py-1"
-                name="mobile_number"
-                id="mobile_number"
-                placeholder="09#########"
-                minlength="11"
-                maxlength="11"
-                required
-              />
+              <div class="input-group mobile-number-input">
+                <span class="input-group-text px-2">09</span>
+                <input
+                  type="tel"
+                  pattern="[0-9]*"
+                  inputmode="numeric"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                  class="form-control px-2 py-1"
+                  name="mobile_number"
+                  id="mobile_number"
+                  placeholder="number"
+                  minlength="9"
+                  maxlength="9"
+                  required
+                />
+              </div>
             </div>
             <div
               class="d-flex flex-row justify-content-center align-items-center gap-2 mb-4"
@@ -336,7 +358,7 @@
                 pattern="[0-9]*"
                 inputmode="numeric"
                 oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                class="form-control sub_load w-25 px-2 py-1"
+                class="form-control sub_load mobile-number-input px-2 py-1"
                 name="sub_load"
                 id="sub_load"
                 minlength="1"
@@ -353,7 +375,7 @@
       <!-- #endregion PasaLoad -->
 
       <!-- #region History -->
-      <section class="container mx-auto rounded-3 bg-color text-white mb-5 p-4">
+      <section class="container rounded-3 bg-color text-white mx-auto mb-5 p-4">
         <div class="row">
           <div class="col">
             <p class="display-6 fw-bolder text-center mb-4">History</p>

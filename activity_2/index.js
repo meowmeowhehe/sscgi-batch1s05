@@ -41,35 +41,39 @@ function hasAccount() {
 function login(event) {
   event.preventDefault();
 
+  var accountExist = false;
   let number = document.getElementById("login_number").value;
   let password = document.getElementById("login_password").value;
 
-  let accountExist = false;
-  for (const user of users) {
-    if (user.number === number && user.password === password) {
-      accountExist = true;
-      currentUser = user;
-    }
-  }
-
-  if (accountExist) {
-    alert("Logged in successfully");
-
-    document.getElementById("number").innerHTML = currentUser.number;
-    document.getElementById("current_load").value = currentUser.current_load;
-    loadHistoryLoad();
-
-    loginRegister.classList.add("visually-hidden");
-    pasaLoad.classList.remove("visually-hidden");
-
-    // Reset
-    document.getElementById("login_number").value = "";
-    document.getElementById("login_password").value = "";
+  if (number.length < 9) {
+    alert("Please enter a valid 11-digit phone number. (09 already included)");
   } else {
-    alert("No user found");
+    for (const user of users) {
+      if (user.number === "09" + number && user.password === password) {
+        accountExist = true;
+        currentUser = user;
+      }
+    }
 
-    // Reset
-    document.getElementById("login_password").value = "";
+    if (accountExist) {
+      alert("Logged in successfully");
+
+      document.getElementById("number").innerHTML = currentUser.number;
+      document.getElementById("current_load").value = currentUser.current_load;
+      loadHistoryLoad();
+
+      loginRegister.classList.add("visually-hidden");
+      pasaLoad.classList.remove("visually-hidden");
+
+      // Reset
+      document.getElementById("login_number").value = "";
+      document.getElementById("login_password").value = "";
+    } else {
+      alert("No user found");
+
+      // Reset
+      document.getElementById("login_password").value = "";
+    }
   }
 }
 
@@ -80,10 +84,12 @@ function register(event) {
   let password = document.getElementById("register_password").value;
   let confirm_password = document.getElementById("confirm_password").value;
 
-  if (password === confirm_password) {
+  if (number.length < 9) {
+    alert("Please enter a valid 11-digit phone number. (09 already included)");
+  } else if (password === confirm_password) {
     let isRegistered = false;
     for (const user of users) {
-      if (user.number === number) {
+      if (user.number === "09" + number) {
         isRegistered = true;
       }
     }
@@ -94,19 +100,19 @@ function register(event) {
       alert("Account registered");
 
       users.push({
-        number: number,
+        number: "09" + number,
         password: password,
         current_load: 0,
         history_load: [],
       });
 
-      // Reset
-      document.getElementById("register_number").value = "";
-      document.getElementById("register_password").value = "";
-      document.getElementById("confirm_password").value = "";
-
       hasAccount();
     }
+
+    // Reset
+    document.getElementById("register_number").value = "";
+    document.getElementById("register_password").value = "";
+    document.getElementById("confirm_password").value = "";
   } else {
     alert("Password doesn't match");
 
@@ -237,7 +243,9 @@ function diminishLoad(event) {
   let current_load = Number(document.getElementById("current_load").value);
   let sub_load = Number(document.getElementById("sub_load").value);
 
-  if (sub_load === 0) {
+  if (mobile_number.length < 9) {
+    alert("Please enter a valid 11-digit phone number. (09 already included)");
+  } else if (sub_load === 0) {
     alert("You can't pasaload 0!");
 
     // Reset
