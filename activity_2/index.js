@@ -95,8 +95,11 @@ function register(event) {
     alert("Please enter a valid 11-digit phone number. (09 already included)");
   } else if (password === confirm_password) {
     let isRegistered = false;
-    if (currentUser.number === "09" + number) {
-      isRegistered = true;
+
+    for (const user of users) {
+      if (user.number === "09" + number) {
+        isRegistered = true;
+      }
     }
 
     if (isRegistered) {
